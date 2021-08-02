@@ -1,0 +1,139 @@
+swagger: "2.0"
+info:
+  description: "Servicio que entrega el listado de pokemones y sus caracteristicas"
+  version: "1.0.0"
+  title: "PokeDex"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "cnorellanan@gmail.com"
+host: localhost
+basePath: /pokedex
+schemes:
+- "http"
+paths:
+  /pokemon:
+    get:
+      summary: "Muestra el listado de pokemones"
+      description: "Lista de Pokemones"
+      operationId: "pokedex"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "limit"
+        type: "integer"
+        description: "Cantidad de resultados"
+        required: false
+        default: 20
+      - in: "query"
+        name: "offset"
+        type: "integer"
+        description: "Comienzo de resultados"
+        required: false
+        default: 0
+      responses:
+        200:
+          description: "respuesta del servicio"
+          schema:
+            $ref: "#/definitions/ListPokemonTO"
+        500:
+          description: "Error Interno"
+  /pokemon/{id}:
+    get:
+      summary: "Muestra detalle de un pokemon"
+      description: "Detalle de pokemon"
+      operationId: "pokemon"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "integer"
+        description: "pokemonId"
+        required: true
+      responses:
+        200:
+          description: "respuesta del servicio"
+          schema:
+            $ref: "#/definitions/PokemonDetailsTO"
+        400:
+          description: "Id de pokemon inválido"
+        404:
+          description: "Pokemon no encontrado"
+        500:
+          description: "Error Interno"
+
+definitions:
+  PokemonListTO:
+    properties:
+      limit:
+        type: "integer"
+        description: "Cantidad de resultados"
+      offset:
+        type: "integer"
+        description: "Comienzo de resultados"
+      total:
+        type: "integer"
+        description: "Total de resultados"
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/PokemonTO"
+        description: "Lista de pokemones"
+  PokemonTO:
+    properties:
+      id:
+        type: "integer"
+        description: "ID del pokemon"
+      image:
+        type: "string"
+        description: "URL imagen pokemon"
+      name:
+        type: "string"
+        description: "Nombre del pokemon"
+      type:
+        type: "array"
+        description: "Tipos del pokemon"
+        items: 
+          type: "string"
+      weight:
+        type: "number"
+        description: "Peso del pokemon"
+      abilities:
+        type: "array"
+        description: "Habilidades del pokemon"
+        items:
+          $ref: "#/definitions/AbilityTO"
+  PokemonDetailsTO:
+    properties:
+      id:
+        type: "integer"
+        description: "ID del pokemon"
+      name:
+        type: "string"
+        description: "Nombre del pokemon"
+      description:
+        type: "string"
+        description: "Descripción del pokemon"
+      evolutionChain:
+        type: "array"
+        description: "Evoluciones del pokemon"
+        items:
+          $ref: "#/definitions/PokemonTO"
+      varieties:
+        type: "array"
+        description: "Variantes del pokemon"
+        items:
+          $ref: "#/definitions/PokemonTO"
+  AbilityTO:
+    properties:
+      name:
+        type: "string"
+        description: "Nombre de la habilidad"
+      hidden:
+        type: "boolean"
+        description: "Es habilidad oculta"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

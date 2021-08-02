@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "71e461b5-148e-4d58-bbcb-f38be6c6e4c4",
+		"name": "Pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pokedex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.54.71.10:8080/pokedex",
+					"protocol": "http",
+					"host": [
+						"52",
+						"54",
+						"71",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pokemon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.54.71.10:8080/pokedex/pokemon/6",
+					"protocol": "http",
+					"host": [
+						"52",
+						"54",
+						"71",
+						"10"
+					],
+					"port": "8080",
+					"path": [
+						"pokedex",
+						"pokemon",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+  "groupId"          : "com.corellana",
+  "artifactId"       : "pokedex",
+  "artifactVersion"  : "1.0.0",
+  
+  "hideGenerationTimestamp" : true,
+  "library"          : "spring-boot",
+  "dateLibrary"      : "java8",
+  "java8"            : true,
+  "springBootVersion": "2.5.2",
+  "defaultInterfaces": false,
+  
+  "basePackage"      : "com.corellana.pokedex",
+  "configPackage"    : "com.corellana.pokedex.config",
+  "apiPackage"       : "com.corellana.pokedex.api",
+  "modelPackage"     : "com.corellana.pokedex.model",
+  "title"            : "Pokedex",
+  
+  "developerName"    : "Christopher Orellana",
+  "developerEmail"   : "cnorellanan@gmail.com"
+}
